@@ -1,0 +1,47 @@
+{
+  "name": "react-library-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.tsx",
+  "types": "types/index.d.ts",
+  "files": [
+    "src",
+    "dist/*.js",
+    "types/*.d.ts"
+  ],
+  "scripts": {
+    "start": "rollup -c -w",
+    "prebuild": "npx -p typescript tsc --declaration --emitDeclarationOnly --outDir types",
+    "build": "cross-env NODE_ENV=production node config/rollup.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.3.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.56.2",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-serve": "^1.1.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.3.5"
+  }
+}
