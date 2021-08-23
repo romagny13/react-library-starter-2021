@@ -1,7 +1,8 @@
-# REACT LIBRARY STARTER [WIP]
+# React Library Starter [WIP]
 
+> A starter kit to build libraries with React. Typescript and Rollup are used.
 
-## USAGE
+## Usage
 
 Install dependencies
 
@@ -24,7 +25,7 @@ npm start
 Decision: use only a documentation and remove example (directory and script)
 
 
-## COMPONENT DOCUMENTATION
+## Component documentation
 
 [Storybook](https://storybook.js.org/docs/react/get-started/install)
 
@@ -38,6 +39,6 @@ Run
  npm run storybook
 ```
 
-## TEST
+## Test
 
 Recommendation: install Jest 
