@@ -43,7 +43,7 @@
 
   function ComponentA(_ref) {
     var _ref$message = _ref.message,
-        message = _ref$message === void 0 ? "Hello World" : _ref$message;
+        message = _ref$message === void 0 ? 'Hello World' : _ref$message;
     return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement("h2", null, "Component A"), /*#__PURE__*/React__default['default'].createElement("p", null, message));
   }
 

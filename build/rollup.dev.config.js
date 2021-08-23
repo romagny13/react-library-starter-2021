@@ -7,26 +7,24 @@ const postcss = require("rollup-plugin-postcss");
 const serve = require("rollup-plugin-serve");
 const livereload = require("rollup-plugin-livereload");
 
-const isProd = process.env.NODE_ENV === "production";
 const extensions = [".js", ".ts", ".tsx"];
 
 export default {
-  input: "./example/es6/index.tsx",
+  input: "./example/index.tsx",
   output: {
-    file: "./example/es6/build.js",
+    file: "./example/build.js",
     format: "umd",
     name: "ReactLibraryStarter",
     globals: {
-      react: 'React',
+      react: "React",
+      "react-dom": "ReactDOM",
     },
   },
-  external: ['react'],
+  external: ["react", "react-dom"],
   plugins: [
     peerDepsExternal(),
     replace({
-      "process.env.NODE_ENV": JSON.stringify(
-        isProd ? "production" : "development"
-      ),
+      "process.env.NODE_ENV": JSON.stringify("development"),
       preventAssignment: true,
     }),
     nodeResolve({ extensions }),
@@ -50,10 +48,10 @@ export default {
       openPage: "/",
       host: "localhost",
       port: 3000,
-      contentBase: ["./example/es6"],
+      contentBase: ["./example"],
     }),
     livereload({
-      watch: ["./example/es6"],
+      watch: ["./example"],
       exts: ["html", "js", "css"],
     }),
   ],

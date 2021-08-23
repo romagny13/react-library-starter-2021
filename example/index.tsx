@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { ComponentA } from "../../src/index";
+import { ComponentA } from "../src/index";
 
 function App() {
   return (

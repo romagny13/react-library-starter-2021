@@ -1,2 +1,2 @@
-export { ComponentA };
 import ComponentA from "./ComponentA";
+export { ComponentA };
