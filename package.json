@@ -12,8 +12,8 @@
   "scripts": {
     "types": "npx -p typescript tsc --declaration --emitDeclarationOnly --outDir types",
     "prebuild": "npm run types",
-    "build": "node build/rollup.js",
-    "start": "rollup -c build/rollup.dev.config.js -w"
+    "build": "node config/rollup.js",
+    "start": "rollup -c config/rollup.dev.config.js -w"
   },
   "keywords": [],
   "author": "romagny13",
