@@ -1,5 +1,5 @@
 /**
- * USED by rollup.js 
+ * USED by rollup.js
  * can be executed with a script: "build": "rollup -c build/configs.js"
  */
 const peerDepsExternal = require("rollup-plugin-peer-deps-external");
@@ -24,63 +24,48 @@ const banner = `/*!
   * @license MIT
   */`;
 
+const input = "./src/index.tsx";
+
+const globals = { react: "React" };
+
+const plugins = [
+  peerDepsExternal(),
+  replace({
+    "process.env.NODE_ENV": JSON.stringify("development"),
+    preventAssignment: true
+  }),
+  nodeResolve({ extensions }),
+  commonjs({
+    include: /node_modules/
+  }),
+  babel({
+    extensions,
+    exclude: /node_modules/,
+    babelHelpers: "bundled"
+  }),
+  postcss()
+];
+
 module.exports = [
   {
-    input: "./src/index.tsx",
+    input,
     output: {
       file: `./dist/${fileName}.js`,
       banner,
       format: "umd",
       name: libraryName,
-      globals: {
-        react: "React",
-      },
+      globals
     },
-    plugins: [
-      peerDepsExternal(),
-      replace({
-        "process.env.NODE_ENV": JSON.stringify("development"),
-        preventAssignment: true,
-      }),
-      nodeResolve({ extensions }),
-      commonjs({
-        include: /node_modules/,
-      }),
-      babel({
-        extensions,
-        exclude: /node_modules/,
-        babelHelpers: "bundled",
-      }),
-      postcss(),
-    ],
+    plugins
   },
   {
-    input: "./src/index.tsx",
+    input,
     output: {
       file: `./dist/${fileName}.min.js`,
       format: "umd",
       name: libraryName,
-      globals: {
-        react: "React",
-      },
+      globals
     },
-    plugins: [
-      peerDepsExternal(),
-      replace({
-        "process.env.NODE_ENV": JSON.stringify("production"),
-        preventAssignment: true,
-      }),
-      nodeResolve({ extensions }),
-      commonjs({
-        include: /node_modules/,
-      }),
-      babel({
-        extensions,
-        exclude: /node_modules/,
-        babelHelpers: "bundled",
-      }),
-      postcss(),
-      terser(),
-    ],
-  },
+    plugins: [...plugins, terser()]
+  }
 ];

@@ -17,30 +17,24 @@ export default {
     name: "ReactLibraryStarter",
     globals: {
       react: "React",
-      "react-dom": "ReactDOM",
-    },
+      "react-dom": "ReactDOM"
+    }
   },
   external: ["react", "react-dom"],
   plugins: [
     peerDepsExternal(),
     replace({
       "process.env.NODE_ENV": JSON.stringify("development"),
-      preventAssignment: true,
+      preventAssignment: true
     }),
     nodeResolve({ extensions }),
     commonjs({
-      include: /node_modules/,
+      include: /node_modules/
     }),
     babel({
       extensions,
       exclude: /node_modules/,
-      babelHelpers: "bundled",
-      // babelrc: false,
-      // presets: [
-      //   "@babel/preset-env",
-      //   "@babel/preset-react",
-      //   "@babel/preset-typescript",
-      // ]
+      babelHelpers: "bundled"
     }),
     postcss(),
     serve({
@@ -48,11 +42,11 @@ export default {
       openPage: "/",
       host: "localhost",
       port: 3000,
-      contentBase: ["./example"],
+      contentBase: ["./example"]
     }),
     livereload({
       watch: ["./example"],
-      exts: ["html", "js", "css"],
-    }),
-  ],
+      exts: ["html", "js", "css"]
+    })
+  ]
 };
