@@ -1,6 +1,6 @@
 /**
  * ALLOWS TO BUILD Library (source in React + Typescript) with Node.js
- * Script example : "build": "node build/rollup.js"
+ * Script example : "build": "node config/rollup.js"
  * Change outDir
  */
 const fs = require("fs");
@@ -44,26 +44,30 @@ function writeFile(path, data) {
   });
 }
 
-function build(configs) {
-  if (!configs) {
-    console.log(colors.FgRed("No configs provided"));
-    return;
-  }
-  if (outDir !== "") {
-    removeDirectory(outDir);
-    createDirectoryIfNotExists(outDir);
-  }
-
-  for (let index = 0; index < configs.length; index++) {
-    const config = configs[index];
-
-    const { input, plugins, output } = config;
-
-    rollup({ input, plugins })
-      .then(bundle => bundle.generate(output))
-      .then(bundle => bundle.output[0].code) // get code
-      .then(code => writeFile(output.file, code)) // write file and log size
-      .catch(error => console.log(error));
-  }
+function buildEntry({ input, plugins, output }) {
+  return rollup({ input, plugins })
+    .then(bundle => bundle.generate(output))
+    .then(bundle => bundle.output[0].code) // get code
+    .then(code => writeFile(output.file, code)); // write file and log size
 }
+
+function build(configs) {
+  const total = configs.length;
+  let index = 0;
+
+  removeDirectory(outDir);
+  createDirectoryIfNotExists(outDir);
+
+  const next = () => {
+    buildEntry(configs[index])
+      .then(() => {
+        index++;
+        if (index < total) next();
+      })
+      .catch(error => console.log(error));
+  };
+
+  next();
+}
+
 build(configs);
