@@ -73,5 +73,6 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  // "exclude": ["stories/**"] /* exclude folder from bundle */
 }

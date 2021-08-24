@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import './ComponentA.css';
+import "./ComponentA.css";
 export interface ComponentAProps {
     message?: string;
 }
-export default function ComponentA({ message, }: ComponentAProps): JSX.Element;
+export default function ComponentA({ message }: ComponentAProps): JSX.Element;

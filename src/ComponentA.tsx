@@ -1,18 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import './ComponentA.css'
+import "./ComponentA.css";
 
 export interface ComponentAProps {
-  message?: string
+  message?: string;
 }
 
 export default function ComponentA({
-  message = 'Hello World',
+  message = "Hello World"
 }: ComponentAProps) {
   return (
     <>
       <h2>Component A</h2>
       <p>{message}</p>
     </>
-  )
+  );
 }
