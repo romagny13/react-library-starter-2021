@@ -7,6 +7,7 @@ const postcss = require("rollup-plugin-postcss");
 const serve = require("rollup-plugin-serve");
 const livereload = require("rollup-plugin-livereload");
 
+const libraryName = "ReactLibraryStarter";
 const extensions = [".js", ".ts", ".tsx"];
 
 export default {
@@ -14,7 +15,7 @@ export default {
   output: {
     file: "./example/build.js",
     format: "umd",
-    name: "ReactLibraryStarter",
+    name: libraryName,
     globals: {
       react: "React",
       "react-dom": "ReactDOM"

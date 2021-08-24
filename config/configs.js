@@ -16,8 +16,6 @@ const fileName = pkg.name;
 const author = pkg.author;
 const version = pkg.version;
 
-const extensions = [".js", ".ts", ".tsx"];
-
 const banner = `/*!
   * ${libraryName} v${version}
   * (c) ${new Date().getFullYear()} ${author}
@@ -27,6 +25,8 @@ const banner = `/*!
 const input = "./src/index.tsx";
 
 const globals = { react: "React" };
+
+const extensions = [".js", ".ts", ".tsx"];
 
 const plugins = [
   peerDepsExternal(),
