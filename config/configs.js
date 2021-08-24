@@ -30,10 +30,6 @@ const globals = { react: "React" };
 
 const plugins = [
   peerDepsExternal(),
-  replace({
-    "process.env.NODE_ENV": JSON.stringify("development"),
-    preventAssignment: true
-  }),
   nodeResolve({ extensions }),
   commonjs({
     include: /node_modules/
@@ -56,7 +52,13 @@ module.exports = [
       name: libraryName,
       globals
     },
-    plugins
+    plugins: [
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("development"),
+        preventAssignment: true
+      }),
+      ...plugins
+    ]
   },
   {
     input,
@@ -66,6 +68,13 @@ module.exports = [
       name: libraryName,
       globals
     },
-    plugins: [...plugins, terser()]
+    plugins: [
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("production"),
+        preventAssignment: true
+      }),
+      ...plugins,
+      terser()
+    ]
   }
 ];
