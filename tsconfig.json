@@ -74,5 +74,5 @@
   "include": [
     "src"
   ],
-  // "exclude": ["stories/**"] /* exclude folder from bundle */
+  // "exclude": ["stories/**"] /* Excludes folders and files from bundle */
 }
